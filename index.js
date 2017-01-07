@@ -5,7 +5,7 @@
 'use strict';
 
 const program = require('commander');
-const pkg = require('../package');
+const pkg = require('./package');
 const fs = require('fs');
 const unpack = require('./lib');
 

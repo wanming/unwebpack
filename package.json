@@ -1,6 +1,6 @@
 {
   "name": "unwebpack",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "unwebpack webpacked bundle",
   "main": "index.js",
   "bin": {
