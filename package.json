@@ -1,10 +1,10 @@
 {
   "name": "unwebpack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "unwebpack webpacked bundle",
   "main": "index.js",
   "bin": {
-    "unwebpack": "./index"
+    "unwebpack": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
