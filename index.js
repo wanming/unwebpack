@@ -4,17 +4,15 @@
 
 'use strict';
 
-const path = require('path');
 const program = require('commander');
 const pkg = require('../package');
 const fs = require('fs');
-const moment = require('moment');
 const unpack = require('./lib');
 
 program
   .version(pkg.version)
-  .command('unpack <source> <targetDir>')
-  .action(function (source, _targetDir) {
+  .command('unpack <source> <targetDir> [modules...]')
+  .action(function (source, _targetDir, modules) {
     if (!fs.existsSync(source)) {
       throw new Error('source file not exists');
     }
@@ -22,15 +20,17 @@ program
     const targetDir = _targetDir || './';
 
     if (!fs.existsSync(targetDir)) {
-      throw new Error('targetDir', targetDir, 'not exists');
+      fs.mkdirSync(targetDir);
     }
 
-    const newTargetDir = path.join(targetDir, 'unwebpacked-' + moment().format('YYYYMMDD-HHmmss'));
-    fs.mkdirSync(newTargetDir);
-    console.log('Target folder created at', newTargetDir);
+    if (fs.readdirSync(targetDir).length > 2) {
+      throw new Error('targetDir must be empty');
+    }
+
+    console.log('Target folder is', targetDir);
 
     const content = fs.readFileSync(source).toString();
-    unpack(content, newTargetDir);
+    unpack(content, targetDir, modules);
   });
 
 program.parse(process.argv);
