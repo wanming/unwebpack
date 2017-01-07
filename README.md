@@ -1,6 +1,11 @@
 # unwebpack
 unwebpack webpacked bundle
 
+### install
+
+`npm i -g unwebpack`
+
+
 ### usage
 
 `unwebpack unpack xxx.js path/to/folder [modules]`
